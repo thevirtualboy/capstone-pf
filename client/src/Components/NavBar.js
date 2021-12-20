@@ -42,16 +42,6 @@ function NavBar () {
         borderColor: "#4249a2",
     }
 
-    let link4Style = {
-        textDecoration: "none",
-        flexGrow: "1",
-        paddingTop: "10px",
-        paddingBottom: "5px",
-        borderWidth: "1px",
-        borderRadius: "3px 3px 0px 0px",
-        borderColor: "#4249a2",
-    }
-
     if (page === 1) {
         link1Style.backgroundColor = "black"
     }
@@ -64,16 +54,11 @@ function NavBar () {
         link3Style.backgroundColor = "black"
     }
 
-    if (page === 4) {
-        link4Style.backgroundColor = "black"
-    }
-
     return (
         <div style={divStyle}>
             <Link className="link" style={link1Style} onClick={() => setPage(1)} to="/home">HOME</Link>
             <Link className="link" style={link2Style} onClick={() => setPage(2)} to="/games">GAMES</Link>
             <Link className="link" style={link3Style} onClick={() => setPage(3)} to="/stack">STACK</Link>
-            <Link className="link" style={link4Style} onClick={() => setPage(4)} to="/communities">COMMUNITIES</Link>
         </div>
     )
 }

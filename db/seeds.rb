@@ -9,6 +9,7 @@ User.destroy_all
 Game.destroy_all
 Role.destroy_all
 Join.destroy_all
+Post.destroy_all
 
 u1 = User.create(username: "xXD34D5H0TXx", email: "coolkillah@gmail.com", avatar: "", password: "imreallycool")
 u2 = User.create(username: "freddy2fingers", email: "fingers@gmail.com", avatar: "", password: "fingthing")
@@ -39,3 +40,6 @@ Join.create(game_id: g1.id, user_id: u2.id)
 Join.create(game_id: g2.id, user_id: u3.id)
 Join.create(game_id: g3.id, user_id: u4.id)
 Join.create(game_id: g4.id, user_id: u5.id)
+
+Post.create(title: "Please Help Me!", description: "I need a group to carry me in Iron Banner.", user_limit: 2, poster_id: u1.id, game_id: g1.id)
+Post.create(title: "Need a Duo Partner", description: "I'm a support main and I need an ADC to help me out in the bot lane in ranked.", user_limit: 1, poster_id: u4.id, game_id: g3.id)
