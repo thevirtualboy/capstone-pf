@@ -33,7 +33,7 @@ const navStyle = {
     margin: "auto",
 }
 
-function Header() {
+function Header({page, setPage}) {
     return (
     <>
         <div style={headerStyle}>
@@ -45,7 +45,7 @@ function Header() {
                 </div>
             </div>
             <div style={navStyle}>
-                <NavBar />
+                <NavBar page={page} setPage={setPage} />
             </div>
         </div>
     </>
