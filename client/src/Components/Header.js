@@ -13,7 +13,9 @@ const btnStyle = {
     float: "right",
     border: "solid #2f3335",
     borderWidth: "1px",
-    borderRadius: "100px"
+    borderRadius: "100px",
+    marginLeft: "10px",
+    marginRight: "10px"
 }
 
 const hContentStyle = {
@@ -33,15 +35,27 @@ const navStyle = {
     margin: "auto",
 }
 
-function Header({page, setPage}) {
+function Header({page, setPage, uselog, onLogout}) {
+
+    function handleLogout() {
+        fetch("/logout", {
+          method: "DELETE",
+        }).then(() => onLogout());
+    }
+
     return (
     <>
         <div style={headerStyle}>
             <div style={hContentStyle}>
                 <h1>stack.gg</h1>
                 <div style={{display: "flex", alignItems: "center", justifyContent: "space-around", width: "150px"}}>
-                    <p>Username</p>
-                    <img src={placeholder} style={btnStyle}/>
+                    <p>{uselog.username}</p>
+                    {uselog.avatar !== "" ?
+                        <img src={uselog.avatar} style={btnStyle}/>
+                        :
+                        <img src={placeholder} style={btnStyle}/>
+                    }
+                    <button onClick={handleLogout} >Log Out</button>
                 </div>
             </div>
             <div style={navStyle}>

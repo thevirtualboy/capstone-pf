@@ -13,7 +13,11 @@ class PostsController < ApplicationController
     def create
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
         post = Post.create(params_post)
-        render json: post
+        if post.valid?
+            render json: post
+        else 
+            render json: { error: "Missing Info"}
+        end
     end
 
     def update

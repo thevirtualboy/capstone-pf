@@ -1,5 +1,4 @@
 import {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
 
 const form1Styles = {
   display: "flex",
@@ -38,64 +37,62 @@ const btnStyle = {
 }
 
 function Login ({onLogin}) {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [newUser, setNewUser] = useState({
+    username: "",
+    email: "",
+    password: ""
+  })
+  const [signed, setSigned] = useState(false)
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [newUser, setNewUser] = useState({
-      username: "",
-      email: "",
-      password: ""
-    })
-    const [signed, setSigned] = useState(false)
-    const navigate = useNavigate()
+  function handleUserForm (e) {
+    setNewUser({...newUser, [e.target.name] : e.target.value})
+  }
 
-    function handleUserForm (e) {
-      setNewUser({...newUser, [e.target.name] : e.target.value})
-    }
-
-    function handleSubmit(e){
-        e.preventDefault()
+  function handleSubmit(e){
+    e.preventDefault()
         
-        fetch('/login', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({email, password}),
+    fetch('/login', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({email, password}),
 
-        })
-        .then(response => {if (response.ok) {
-          response.json().then((data) => {
-            onLogin(data)
-            setEmail("")
-            setPassword("")
-            navigate('/home')});
-        } else {
+    })
+    .then(response => {if (response.ok) {
+      response.json().then((data) => {
+        onLogin(data)
+        setEmail("")
+        setPassword("")
+      });
+      } else {
           alert("Not a valid login.")
-        }});
-    }
+      }});
+  }
 
-    function handleSignUp (e) {
-      e.preventDefault()
-      fetch('localhost:3000/users', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser)
+  function handleSignUp (e) {
+    e.preventDefault()
+    fetch('localhost:3000/users', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser)
+    })
+    .then(r => r.json())
+    .then(data => {
+      console.log(data)
+      setNewUser({
+        username: "",
+        email: "",
+        password: ""
       })
-      .then(r => r.json())
-      .then(data => {
-        console.log(data)
-        setNewUser({
-          username: "",
-          email: "",
-          password: ""
-        })
-        setSigned(true)
-      })
-    }
-    return (
+      setSigned(true)
+    })
+  }
+  return (
     <>
     <div style={pageStyle}>
       <form onSubmit = {handleSubmit} style={form1Styles}>
@@ -131,12 +128,7 @@ function Login ({onLogin}) {
       {signed ? <p>You have successfully registered your account, please log in with your username and password.</p> : null}
     </div>
     </>
-
-
-
-
-
-
-)
+  )
 }
+
 export default Login
