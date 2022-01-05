@@ -157,9 +157,24 @@ function Profile ({uselog, update, setUpdate, onLogout}) {
                                 :
                                 <img style={avatarStyle} src={placeholder} />
                             }
-                            <h1>{user.username}</h1>
+                            <h1>{user.username}</h1><p>{user.contact}</p>
                         </div>
-                        <h3>Game(s):</h3>{user.games.map(game => <p style={{margin: "0px"}}>{game.title}</p>)}
+                        <div style={{display: "flex", gap: "100px"}}>
+                            <div style={{display: "flex", flexDirection: "column"}}>
+                                <h3>Game(s):</h3>
+                                {user.games.length === 0 ? 
+                                    <p>None</p>
+                                    :
+                                    <>
+                                        {user.games.map(game => <p style={{margin: "0px"}}>{game.title}</p>)}
+                                    </>
+                                }
+                            </div>
+                            <div style={{display: "flex", flexDirection: "column"}}>
+                                <h3>Bio:</h3>
+                                <p>{user.bio}</p>
+                            </div>
+                        </div>
                     </div>
                     {user.id === uselog.id ?
                         <>

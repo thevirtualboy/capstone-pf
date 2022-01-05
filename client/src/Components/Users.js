@@ -55,9 +55,16 @@ function Users () {
                         :
                         <img style={avatarStyle} src={placeholder} />
                     }
-                    <h1>{user.username}</h1>
+                    <h1>{user.username}</h1><p>{user.contact}</p>
                 </div>
-                <h3>Game(s):</h3>{user.games.map(game => <p style={{margin: "0px"}}>{game.title}</p>)}
+                <h3>Game(s):</h3>
+                {user.games.length === 0 ? 
+                    <p>None</p>
+                    :
+                    <>
+                        {user.games.map(game => <p style={{margin: "0px"}}>{game.title}</p>)}
+                    </>
+                }
             </div>
             <Link to={`/users/${user.id}`}><button style={btn3Style}>View Profile</button></Link>
         </div>

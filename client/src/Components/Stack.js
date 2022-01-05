@@ -157,7 +157,7 @@ function Stack ({uselog, update, setUpdate}) {
         return (
         <div style={cardStyle}>
             <div style={{marginLeft: "50px", display: "flex", flexDirection: "column"}}>
-                <div style={{display: "flex", flexDirection: "row", alignItems: "center", gap: "25px"}}><h1>{post.title}</h1><p style={{marginRight: "20px"}}>{post.poster.username}</p></div>
+                <div style={{display: "flex", flexDirection: "row", alignItems: "center", gap: "25px"}}><h1>{post.title}</h1><p style={{marginRight: "20px"}}>{post.poster.username} ({post.poster.contact})</p></div>
                 <h2>{games.filter(game => game.id === post.game_id).map(game => {return game.title})}</h2>
                 <p style={{maxWidth: "500px", paddingRight: "50px"}}>{post.description}</p>
             </div>
