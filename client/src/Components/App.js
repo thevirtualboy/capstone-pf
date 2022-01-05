@@ -7,13 +7,10 @@ import Users from './Users'
 import Login from "./Login";
 import { useState, useEffect } from "react";
 
-const pageStyle = {
-}
-
 function App() {
+
   const [login, setLogin] = useState(false)
   const [uselog, setUselog] = useState({})
-  const [page, setPage] = useState("")
   const [update, setUpdate] = useState(false)
 
   useEffect(() => {
@@ -39,10 +36,10 @@ function App() {
   }
 
   return (
-    <div style={pageStyle}>
+    <div>
       {login ? 
       <>
-        <Header page={page} setPage={setPage} uselog={uselog} onLogout={onLogout} />
+        <Header uselog={uselog} onLogout={onLogout} />
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<Home />} />

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
 const divStyle = {
@@ -9,7 +9,12 @@ const divStyle = {
     margin: "auto"
 }
 
-function NavBar ({page, setPage}) {
+function NavBar () {
+
+    const usePathname = () => {
+        const location = useLocation();
+        return location.pathname;
+      }
 
     let link1Style = {
         textDecoration: "none",
@@ -51,28 +56,28 @@ function NavBar ({page, setPage}) {
         borderColor: "#4249a2",
     }
 
-    if (page === 1) {
+    if (usePathname() === "/home") {
         link1Style.backgroundColor = "black"
     }
 
-    if (page === 2) {
+    if (usePathname() === "/games") {
         link2Style.backgroundColor = "black"
     }
 
-    if (page === 3) {
+    if (usePathname() === "/stack") {
         link3Style.backgroundColor = "black"
     }
 
-    if (page === 4) {
+    if (usePathname() === "/users") {
         link4Style.backgroundColor = "black"
     }
 
     return (
         <div style={divStyle}>
-            <Link className="link" style={link1Style} onClick={() => setPage(1)} to="/home">HOME</Link>
-            <Link className="link" style={link2Style} onClick={() => setPage(2)} to="/games">GAMES</Link>
-            <Link className="link" style={link3Style} onClick={() => setPage(3)} to="/stack">STACK</Link>
-            <Link className="link" style={link4Style} onClick={() => setPage(4)} to="/users">USERS</Link>
+            <Link className="link" style={link1Style} to="/home">HOME</Link>
+            <Link className="link" style={link2Style} to="/games">GAMES</Link>
+            <Link className="link" style={link3Style} to="/stack">STACK</Link>
+            <Link className="link" style={link4Style} to="/users">USERS</Link>
         </div>
     )
 }
