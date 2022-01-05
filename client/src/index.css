@@ -24,3 +24,11 @@ code {
 .link:active {
   background-color: #8698a0;
 }
+
+.login:hover {
+  cursor: pointer;
+}
+
+.btn:hover {
+  cursor: pointer;
+}

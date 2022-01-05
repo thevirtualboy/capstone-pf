@@ -5,7 +5,8 @@ const cardStyle = {
     maxWidth: "2000px",
     border: "hidden",
     background: "white",
-    borderRadius: "0px 10px 10px 0px",
+    borderRadius: "20px",
+    flexWrap: "wrap"
 }
 
 const pageStyle = {
@@ -14,6 +15,20 @@ const pageStyle = {
     alignItems: "center",
     margin: "20px",
     gap: "20px"
+}
+
+const btnStyle = {
+    alignSelf: "flex-end",
+    float: "right", 
+    width: "150px", 
+    backgroundColor: "#2f3335",
+    color: "white",
+    fontSize: "15px",
+    borderRadius: "3px",
+    borderWidth: "1px",
+    borderColor: "black",
+    padding: "2px",
+    marginRight: "20px"
 }
 
 function Games ({uselog, update, setUpdate}) {
@@ -84,9 +99,9 @@ function Games ({uselog, update, setUpdate}) {
                 <p style={{maxWidth: "500px", minWidth: "230px", paddingRight: "50px"}}>{game.description}</p>
                 <p>In-game role(s):</p> {game.roles.map(role => <p style={{margin: "0px"}}>{role.name}</p>)}
                 { containsObject(game, uselog.games) ?
-                <button onClick={() => handleRemove(uselog, game)} style={{float: "right", marginRight: "50px", marginBottom: "20px"}}>Remove Game</button>
+                <button onClick={() => handleRemove(uselog, game)} style={btnStyle}>Remove Game</button>
                 :
-                <button onClick={() => handleAdd(uselog, game)} style={{float: "right", marginRight: "50px", marginBottom: "20px"}}>Add Game</button>
+                <button onClick={() => handleAdd(uselog, game)} style={btnStyle}>Add Game</button>
                 }
             </div>
         </div>)

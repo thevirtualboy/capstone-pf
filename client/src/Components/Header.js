@@ -1,5 +1,6 @@
 import NavBar from "./NavBar"
 import placeholder from '../placeholder.jpg'
+import { Link } from "react-router-dom";
 
 const headerStyle = {
     borderBottomStyle: "solid",
@@ -8,7 +9,7 @@ const headerStyle = {
     backgroundColor: "#3b3b3b"
 }
 
-const btnStyle = {
+const imgStyle = {
     height: "35px",
     float: "right",
     border: "solid #2f3335",
@@ -35,6 +36,19 @@ const navStyle = {
     margin: "auto",
 }
 
+const btnStyle = {
+    alignSelf: "flex-end",
+    float: "right", 
+    width: "75px", 
+    backgroundColor: "#2f3335",
+    color: "white",
+    fontSize: "15px",
+    borderRadius: "3px",
+    borderWidth: "1px",
+    borderColor: "black",
+    padding: "2px"
+}
+
 function Header({page, setPage, uselog, onLogout}) {
 
     function handleLogout() {
@@ -49,13 +63,13 @@ function Header({page, setPage, uselog, onLogout}) {
             <div style={hContentStyle}>
                 <h1>stack.gg</h1>
                 <div style={{display: "flex", alignItems: "center", justifyContent: "space-around", width: "150px"}}>
-                    <p>{uselog.username}</p>
+                    <Link to={`/users/${uselog.id}`} style={{textDecoration: "none", color: "white"}}><p>{uselog.username}</p></Link>
                     {uselog.avatar !== "" ?
-                        <img src={uselog.avatar} style={btnStyle}/>
+                        <Link to={`/users/${uselog.id}`}><img src={uselog.avatar} style={imgStyle}/></Link>
                         :
-                        <img src={placeholder} style={btnStyle}/>
+                        <Link to={`/users/${uselog.id}`}><img src={placeholder} style={imgStyle}/></Link>
                     }
-                    <button onClick={handleLogout} >Log Out</button>
+                    <Link to="/home"><button onClick={handleLogout} style={btnStyle}>Log Out</button></Link>
                 </div>
             </div>
             <div style={navStyle}>

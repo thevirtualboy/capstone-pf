@@ -1,10 +1,11 @@
 import Header from "./Header";
-import { Routes, Route, Navigate } from "react-router-dom"
+import { Routes, Route, Navigate, useLocation } from "react-router-dom"
 import Home from "./Home"
 import Stack from "./Stack";
 import Games from "./Games";
 import Users from './Users'
 import Login from "./Login";
+import Profile from "./Profile";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           <Route path="/games" element={<Games uselog={uselog} update={update} setUpdate={setUpdate} />} />
           <Route path="/stack" element={<Stack uselog={uselog} update={update} setUpdate={setUpdate} />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/users/:id" element={<Profile uselog={uselog} update={update} setUpdate={setUpdate} onLogout={onLogout} />} />
         </Routes>
       </>
         :

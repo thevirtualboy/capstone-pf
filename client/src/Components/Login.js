@@ -12,28 +12,50 @@ const form1Styles = {
 const form2Styles = {
   display: "flex",
   flexDirection: "column",
-  height: "400px",
+  height: "300px",
   maxWidth: "500px",
-  justifyContent: "space-around"
+  justifyContent: "space-around",
+  marginRight: "10px",
 }
 
 const pageStyle = {
   display: "flex",
-  justifyContent: "space-around",
-  fontFamily: "sans-serif",
-  marginTop: "20px"
+  justifyContent: "space-evenly",
+  marginTop: "50px",
+  flexWrap: "wrap"
 }
 
 const btnStyle = {
+  alignSelf: "flex-end",
+  float: "right",
   marginTop: "10px", 
   width: "75px", 
-  backgroundColor: "#0A8FF1",
+  backgroundColor: "#2f3335",
   color: "white",
-  fontSize: "20px",
+  fontSize: "15px",
   borderRadius: "3px",
   borderWidth: "1px",
   borderColor: "black",
   padding: "2px"
+}
+
+const greetingStyle = {
+  textAlign: "center",
+  marginTop: "0px",
+  color: "lightgray",
+  paddingTop: '20px'
+}
+
+const subGreetingStyle = {
+  textAlign: "center",
+  color: "lightgray",
+}
+
+const topStyle = {
+  borderBottomStyle: "solid",
+  borderWidth: "1px",
+  borderColor: "black",
+  backgroundColor: "#3b3b3b"
 }
 
 function Login ({onLogin}) {
@@ -42,9 +64,11 @@ function Login ({onLogin}) {
   const [newUser, setNewUser] = useState({
     username: "",
     email: "",
-    password: ""
+    password: "",
+    avatar: ""
   })
   const [signed, setSigned] = useState(false)
+  const [hasLog, setHasLog] = useState(false)
 
   function handleUserForm (e) {
     setNewUser({...newUser, [e.target.name] : e.target.value})
@@ -74,7 +98,7 @@ function Login ({onLogin}) {
 
   function handleSignUp (e) {
     e.preventDefault()
-    fetch('localhost:3000/users', {
+    fetch('/users', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,46 +111,69 @@ function Login ({onLogin}) {
       setNewUser({
         username: "",
         email: "",
-        password: ""
+        password: "",
+        avatar: ""
       })
       setSigned(true)
     })
   }
   return (
     <>
-    <div style={pageStyle}>
-      <form onSubmit = {handleSubmit} style={form1Styles}>
-      <h1> Login Form </h1>  
-        <label>Email: <br/>
-          <input type="text" onChange = {(e)=>setEmail(e.target.value)}/> 
-        </label> <br/>  
-        <label>Password: <br/>
-          <input type="text" onChange = {(e)=>setPassword(e.target.value)} /> 
-        </label> 
-        <button className="btn" style={btnStyle} type="submit">Submit</button>
-      </form>
-      
-      {signed ? 
-        null
-        :
-        <>
-          <form onSubmit = {handleSignUp} style={form2Styles}>
-            <h1>Sign Up</h1>
-            <label>Username: <br/>
-              <input type="text" value={newUser.username} name="username" onChange={handleUserForm} />
-            </label> <br/>
-            <label>Email: <br/>
-              <input type="text" value={newUser.email} name="email" onChange={handleUserForm}/>
-            </label> <br/>
-            <label>Password: <br/>
-              <input type="text" value={newUser.password} name="password" onChange={handleUserForm}/>
-            </label>
-            <button className="btn" style={btnStyle} type="submit">Submit</button>
-          </form>
-        </>
-      }
-      {signed ? <p>You have successfully registered your account, please log in with your username and password.</p> : null}
-    </div>
+      <div style={topStyle}>
+        <h1 style={greetingStyle} >Welcome to stack.gg 🎮</h1>
+        <h4 style={subGreetingStyle} >Stack the Odds in Your Favor</h4>
+      </div>
+        {hasLog ?
+          <>
+            <div style={pageStyle}>
+              <form onSubmit = {handleSubmit} style={form1Styles}>
+              <h2 style={{color: "lightgray"}}>Login</h2>  
+                <label style={{color: "lightgray"}}>Email: <br/>
+                  <input type="text" onChange = {(e)=>setEmail(e.target.value)}/> 
+                </label> <br/>  
+                <label style={{color: "lightgray"}}>Password: <br/>
+                  <input type="text" onChange = {(e)=>setPassword(e.target.value)} /> 
+                </label> 
+                <button className="btn" style={btnStyle} type="submit">Submit</button>
+              </form>
+            </div>
+            <p className="login" style={{float: "right", marginRight: '50px', color: "gray"}} onClick={() => setHasLog(false)}>Sign Up</p>
+            <p style={{float: "right", marginRight: '10px', color: "lightgray"}} >Don't Have an Account?</p>
+          </>
+          :
+          <>
+            {signed ? 
+              <p>You have successfully registered your account, please log in with your email and password.</p>
+              :
+              <>
+                <div style={pageStyle}>
+                  <div style={{marginLeft: "10px"}}>
+                    <h2 style={{color: "lightgray"}}>What is stack.gg?</h2>
+                    <p style={{color: "lightgray", maxWidth: "500px", paddingLeft: "20px"}}>stack.gg is a place to team up with other players to take on any challenges you might face in-game. Whether you want to dominate the competitive ladder or take on the latest raid, you can find a team here.</p>
+                  </div>
+                  <form onSubmit = {handleSignUp} style={form2Styles}>
+                    <h2 style={{color: "lightgray"}}>Sign Up</h2>
+                    <label style={{color: "lightgray"}}>Username: <br/>
+                      <input type="text" value={newUser.username} name="username" onChange={handleUserForm} />
+                    </label> <br/>
+                    <label style={{color: "lightgray"}}>Email: <br/>
+                      <input type="text" value={newUser.email} name="email" onChange={handleUserForm}/>
+                    </label> <br/>
+                    <label style={{color: "lightgray"}}>Avatar: <br/>
+                      <input type="text" placeholder="URL" value={newUser.avatar} name="avatar" onChange={handleUserForm}/>
+                    </label> <br/>
+                    <label style={{color: "lightgray"}}>Password: <br/>
+                      <input type="text" value={newUser.password} name="password" onChange={handleUserForm}/>
+                    </label>
+                    <button className="btn" style={btnStyle} type="submit">Submit</button>
+                  </form>
+                </div> <br />
+                <p className="login" style={{float: "right", marginRight: '50px', color: "gray"}} onClick={() => setHasLog(true)}>Login</p>
+                <p style={{float: "right", marginRight: '10px', color: "lightgray"}} >Already Have an Account?</p>
+              </>
+            }
+          </>
+        }
     </>
   )
 }

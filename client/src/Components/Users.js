@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
+import { Link } from "react-router-dom";
 import placeholder from '../placeholder.jpg'
 
 const cardStyle = {
-    maxWidth: "1500px",
     border: "hidden",
     background: "white",
     borderRadius: "10px",
-    margin: "auto",
+    marginLeft: "50px",
+    marginRight: "50px",
     marginTop: "20px",
-    minHeight: "300px"
+    minHeight: "250px", 
 }
 
 const avatarStyle ={
@@ -16,6 +17,21 @@ const avatarStyle ={
     border: "solid #2f3335",
     borderWidth: "1px",
     borderRadius: "100px"
+}
+
+const btn3Style = {
+    alignSelf: "flex-end",
+    float: "right", 
+    width: "100px", 
+    backgroundColor: "#2f3335",
+    color: "white",
+    fontSize: "15px",
+    borderRadius: "3px",
+    borderWidth: "1px",
+    borderColor: "black",
+    padding: "2px",
+    marginRight: "20px",
+    marginBottom: "20px"
 }
 
 function Users () {
@@ -29,7 +45,7 @@ function Users () {
         })
     }, [])
 
-    const userList = users.map(user => {
+    const userList = users.sort((a, b) => a.id - b.id).map(user => {
         return (
         <div style={cardStyle}>
             <div style={{marginLeft: "50px", display: "flex", flexDirection: "column"}}>
@@ -43,14 +59,14 @@ function Users () {
                 </div>
                 <h3>Game(s):</h3>{user.games.map(game => <p style={{margin: "0px"}}>{game.title}</p>)}
             </div>
-            <button style={{float: "right", marginRight: "50px", marginBottom: "20px"}}>Contact {user.username}</button>
+            <Link to={`/users/${user.id}`}><button style={btn3Style}>View Profile</button></Link>
         </div>
         )}
     )
 
     return (
         <>
-            <ul>
+            <ul style={{display: "flex", flexDirection: "column", alignItems: "stretch", maxWidth: "2000px", margin: "auto"}}>
                 {userList}
             </ul>
         </>
