@@ -11,11 +11,11 @@ Role.destroy_all
 Join.destroy_all
 Post.destroy_all
 
-u1 = User.create(username: "xXD34D5H0TXx", email: "coolkillah@gmail.com", avatar: "", bio: "I'm a real gamer with an attitude.", contact: "deaddyboy#0000", password: "imreallycool")
-u2 = User.create(username: "freddy2fingers", email: "fingers@gmail.com", avatar: "", bio: "I have more than 2 fingers, I promise.", contact: "freddyfings#0000", password: "fingthing")
-u3 = User.create(username: "AnnieGunner", email: "gamergirl@gmail.com", avatar: "", bio: "I'm always the Imposter. Every time.", contact: "AnnieSMG#0000", password: "gaming11girl")
-u4 = User.create(username: "gingerSNAP", email: "redhead@gmail.com", avatar: "", bio: "Here for a good time, not a long time.", contact: "gingyS#0000", password: "rednotdead")
-u5 = User.create(username: "PringlCaanz", email: "potatochip@gmail.com", avatar: "", bio: "I love Pringles, they keep me energized in the game.", contact: "pCaanz#0000", password: "snack4life")
+u1 = User.create(username: "xXD34D5H0TXx", email: "coolkillah@gmail.com", avatar: "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Deadshot_5c48a31e72ebe7.86143384.jpg?itok=YqFvmdxM", bio: "I'm a real gamer with an attitude.", contact: "deaddyboy#0000", password: "imreallycool")
+u2 = User.create(username: "freddy2fingers", email: "fingers@gmail.com", avatar: "https://pbs.twimg.com/profile_images/1227575480947179526/39CoNBxx_400x400.jpg", bio: "I have more than 2 fingers, I promise.", contact: "freddyfings#0000", password: "fingthing")
+u3 = User.create(username: "AnnieGunner", email: "gamergirl@gmail.com", avatar: "https://www.nydailynews.com/resizer/VCtxCOo4fnNO8GrABSGGYi15i88=/630x630/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/JYDVEPUFRAC3K6ZZBAJZNGVWVQ.jpg", bio: "I'm always the Imposter. Every time.", contact: "AnnieSMG#0000", password: "gaming11girl")
+u4 = User.create(username: "gingerSNAP", email: "redhead@gmail.com", avatar: "https://vintagekitchennotes.com/wp-content/uploads/2020/10/Gingersnaps-6.1.jpg", bio: "Here for a good time, not a long time.", contact: "gingyS#0000", password: "rednotdead")
+u5 = User.create(username: "PringlCaanz", email: "potatochip@gmail.com", avatar: "https://seeklogo.com/images/P/pringles-logo-62748614CC-seeklogo.com.png", bio: "I love Pringles, they keep me energized in the game.", contact: "pCaanz#0000", password: "snack4life")
 
 g1 = Game.create(title: "Destiny 2", image: "https://cdn-ascope-prod.global.ssl.fastly.net/static/images/boxart_destiny_2_300x400.jpg", genre: "FPS", description: "Bungie's genre bending looter-shooter-mmo hybrid. Group up to take down raids, dungeons, PvP, or just run around in the various zones.")
 g2 = Game.create(title: "Among Us", image: "https://cdn-www.gamerevolution.com/assets/uploads/2020/10/among-us-box.jpg", genre: "Party/Social", description: "In this huge hit, you take turns playing as Crewmates and Imposters. As a Crewmate you must find out who the Imposters are while also doing your tasks. As an Imposter you must use stealth and acting skills to kill everyone without being caught and voted out.")

@@ -12,7 +12,7 @@ const form1Styles = {
 const form2Styles = {
   display: "flex",
   flexDirection: "column",
-  height: "300px",
+  height: "500px",
   maxWidth: "500px",
   justifyContent: "space-around",
   marginRight: "10px",
@@ -115,6 +115,7 @@ function Login ({onLogin}) {
         avatar: ""
       })
       setSigned(true)
+      setHasLog(true)
     })
   }
   return (
@@ -137,8 +138,7 @@ function Login ({onLogin}) {
                 <button className="btn" style={btnStyle} type="submit">Submit</button>
               </form>
             </div>
-            <p className="login" style={{float: "right", marginRight: '50px', color: "gray"}} onClick={() => setHasLog(false)}>Sign Up</p>
-            <p style={{float: "right", marginRight: '10px', color: "lightgray"}} >Don't Have an Account?</p>
+            <p style={{color: "lightgray", textAlign: "center", marginTop: "50px"}} >Don't have an account? <span className="login" style={{color: "gray", marginLeft: "10px"}} onClick={() => setHasLog(false)}>Sign Up</span></p>
           </>
           :
           <>
@@ -159,17 +159,22 @@ function Login ({onLogin}) {
                     <label style={{color: "lightgray"}}>Email: <br/>
                       <input type="text" value={newUser.email} name="email" onChange={handleUserForm}/>
                     </label> <br/>
+                    <label style={{color: "lightgray"}}>Password: <br/>
+                      <input type="text" value={newUser.password} name="password" onChange={handleUserForm}/>
+                    </label> <br />
                     <label style={{color: "lightgray"}}>Avatar: <br/>
                       <input type="text" placeholder="URL" value={newUser.avatar} name="avatar" onChange={handleUserForm}/>
                     </label> <br/>
-                    <label style={{color: "lightgray"}}>Password: <br/>
-                      <input type="text" value={newUser.password} name="password" onChange={handleUserForm}/>
+                    <label style={{color: "lightgray"}}>Bio: <br/>
+                      <textarea type="text" name="bio" onChange={handleUserForm} style={{width: "500px", height: "100px"}}/> 
+                    </label> <br />
+                    <label style={{color: "lightgray"}}>Discord Tag: <br/>
+                      <input type="text" value={newUser.contact} name="contact" onChange={handleUserForm}/>
                     </label>
                     <button className="btn" style={btnStyle} type="submit">Submit</button>
                   </form>
                 </div> <br />
-                <p className="login" style={{float: "right", marginRight: '50px', color: "gray"}} onClick={() => setHasLog(true)}>Login</p>
-                <p style={{float: "right", marginRight: '10px', color: "lightgray"}} >Already Have an Account?</p>
+                <p style={{color: "lightgray", textAlign: "center", marginTop: "50px"}} >Already have an account? <span className="login" style={{color: "gray", marginLeft: "10px"}} onClick={() => setHasLog(true)}>Login</span></p>
               </>
             }
           </>

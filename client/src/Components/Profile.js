@@ -64,7 +64,7 @@ const btn3Style = {
 const form2Styles = {
     display: "flex",
     flexDirection: "column",
-    height: "300px",
+    height: "500px",
     justifyContent: "space-around",
     marginLeft: "50px",
     marginTop: "100px",
@@ -146,6 +146,12 @@ function Profile ({uselog, update, setUpdate, onLogout}) {
                     <label>Avatar: <br/>
                         <input type="text" placeholder="URL" value={editingUser.avatar} name="avatar" onChange={handleEditForm}/>
                     </label> <br/>
+                    <label style={{color: "lightgray"}}>Bio: <br/>
+                      <textarea type="text" name="bio" value={editingUser.bio} onChange={handleEditForm} style={{width: "500px", height: "100px"}}/> 
+                    </label> <br />
+                    <label style={{color: "lightgray"}}>Discord Tag: <br/>
+                      <input type="text" value={editingUser.contact} name="contact" onChange={handleEditForm}/>
+                    </label> <br />
                     <button className="btn" type="submit" style={btn2Style}>Submit</button>
                 </form>
                 :
