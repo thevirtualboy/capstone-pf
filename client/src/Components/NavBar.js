@@ -68,7 +68,7 @@ function NavBar () {
         link3Style.backgroundColor = "black"
     }
 
-    if (usePathname() === "/users") {
+    if (usePathname() === "/stackers") {
         link4Style.backgroundColor = "black"
     }
 
@@ -77,7 +77,7 @@ function NavBar () {
             <Link className="link" style={link1Style} to="/home">HOME</Link>
             <Link className="link" style={link2Style} to="/games">GAMES</Link>
             <Link className="link" style={link3Style} to="/stack">STACK</Link>
-            <Link className="link" style={link4Style} to="/users">USERS</Link>
+            <Link className="link" style={link4Style} to="/stackers">USERS</Link>
         </div>
     )
 }

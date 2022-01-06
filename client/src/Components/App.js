@@ -46,8 +46,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/games" element={<Games uselog={uselog} update={update} setUpdate={setUpdate} />} />
           <Route path="/stack" element={<Stack uselog={uselog} update={update} setUpdate={setUpdate} />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/users/:id" element={<Profile uselog={uselog} update={update} setUpdate={setUpdate} onLogout={onLogout} />} />
+          <Route path="/stackers" element={<Users />} />
+          <Route path="/stackers/:id" element={<Profile uselog={uselog} update={update} setUpdate={setUpdate} onLogout={onLogout} />} />
         </Routes>
       </>
         :
