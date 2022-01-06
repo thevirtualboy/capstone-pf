@@ -66,7 +66,7 @@ function Users () {
                     </>
                 }
             </div>
-            <Link to={`/users/${user.id}`}><button style={btn3Style}>View Profile</button></Link>
+            <Link to={`/stackers/${user.id}`}><button style={btn3Style}>View Profile</button></Link>
         </div>
         )}
     )
