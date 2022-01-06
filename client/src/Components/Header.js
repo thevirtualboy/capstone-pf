@@ -65,9 +65,9 @@ function Header({page, setPage, uselog, onLogout}) {
                 <div style={{display: "flex", alignItems: "center", justifyContent: "space-around", width: "150px"}}>
                     <Link to={`/users/${uselog.id}`} style={{textDecoration: "none", color: "white"}}><p>{uselog.username}</p></Link>
                     {uselog.avatar !== "" ?
-                        <Link to={`/users/${uselog.id}`}><img src={uselog.avatar} style={imgStyle}/></Link>
+                        <Link to={`/stackers/${uselog.id}`}><img src={uselog.avatar} style={imgStyle}/></Link>
                         :
-                        <Link to={`/users/${uselog.id}`}><img src={placeholder} style={imgStyle}/></Link>
+                        <Link to={`/stackers/${uselog.id}`}><img src={placeholder} style={imgStyle}/></Link>
                     }
                     <Link to="/home"><button onClick={handleLogout} style={btnStyle}>Log Out</button></Link>
                 </div>
